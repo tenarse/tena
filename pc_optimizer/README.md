@@ -19,12 +19,37 @@ accion que puede borrar o cambiar algo pide confirmacion antes de hacerlo.
 ## Requisitos
 
 - Windows 10 u 11.
-- [Python 3.8 o mas nuevo](https://www.python.org/downloads/) instalado
-  (al instalarlo, marca la casilla "Add Python to PATH").
 
-## Como ejecutarlo
+## Opcion 1: Descargar el .exe (mas facil, no requiere instalar Python)
 
-Abri una terminal (PowerShell o CMD) en esta carpeta y ejecuta:
+Cada vez que se actualiza el codigo, GitHub compila automaticamente un
+`PCOptimizer.exe` listo para usar. Para descargarlo:
+
+1. Anda a la pestana **[Actions](../../actions/workflows/build-windows-exe.yml)**
+   de este repositorio.
+2. Entra a la ejecucion mas reciente con una tilde verde ✅.
+3. Bajá hasta la seccion **Artifacts** y descarga `PCOptimizer-windows-exe`
+   (es un .zip; adentro esta `PCOptimizer.exe`).
+4. Descomprimilo y hace doble clic en `PCOptimizer.exe`. Windows puede
+   mostrar un aviso de "Editor desconocido" (SmartScreen) la primera vez,
+   porque el .exe no esta firmado digitalmente; hace clic en "Mas
+   informacion" y luego "Ejecutar de todas formas" si confias en el origen
+   (este mismo repositorio).
+
+> Nota: los artefactos de GitHub Actions requieren estar logueado en
+> GitHub para descargarlos, y se borran automaticamente a los 30 dias.
+> Si en algun momento se publica una release (tag `pc-optimizer-v*`), el
+> .exe tambien va a estar disponible sin vencimiento en la seccion
+> **Releases** del repositorio.
+
+## Opcion 2: Ejecutarlo desde el codigo fuente (con Python instalado)
+
+Util si queres modificar el codigo o si no confias todavia en ejecutar un
+.exe descargado.
+
+1. Instala [Python 3.8 o mas nuevo](https://www.python.org/downloads/)
+   (al instalarlo, marca la casilla "Add Python to PATH").
+2. Abri una terminal (PowerShell o CMD) en esta carpeta y ejecuta:
 
 ```bash
 pip install -r requirements.txt
@@ -59,7 +84,7 @@ pc_optimizer/
 
 ## Proximos pasos (ideas para siguientes PRs)
 
-- Empaquetar la app como un `.exe` con `pyinstaller` para no requerir
-  Python instalado.
+- Firmar el .exe digitalmente para que Windows SmartScreen no muestre
+  el aviso de "Editor desconocido".
 - Agregar la opcion de vaciar la Papelera de Reciclaje.
 - Guardar un historial de limpiezas realizadas.
