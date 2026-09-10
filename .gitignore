@@ -1,7 +1,0 @@
-# Python
-__pycache__/
-*.pyc
-*.pyo
-
-# Backups generated at runtime by startup_manager.py
-startup_backup.json
